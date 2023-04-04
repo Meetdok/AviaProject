@@ -65,6 +65,7 @@ namespace WpfProject.ViewModels
 
         public CommandVM nav_airplanes { get; set; }
         public CommandVM nav_companys { get; set; }        
+        public CommandVM nav_tickets { get; set; }
 
         public MainMenuGuestVM()
         {
@@ -95,6 +96,11 @@ namespace WpfProject.ViewModels
            nav_companys = new CommandVM(() =>
             {
                 currentPageControl.SetPage(new ListCompanys());
+            });
+
+            nav_tickets = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ListTickets());
             });
         }
 

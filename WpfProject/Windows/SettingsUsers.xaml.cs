@@ -17,23 +17,16 @@ using WpfProject.WebModels;
 namespace WpfProject.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для Registration.xaml
+    /// Логика взаимодействия для SettingsUsers.xaml
     /// </summary>
-    public partial class Registration : Window
+    public partial class SettingsUsers : Window
     {
-        public Registration()
+        public SettingsUsers()
         {
             InitializeComponent();
         }
 
-        private void Back(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
-        }
-
-        private async void Register(object sender, RoutedEventArgs e)
+        private async void Submit(object sender, RoutedEventArgs e)
         {
             var json = await HttpApi.GetInstance().Post("Users", "SaveUser", new User
             {
@@ -43,18 +36,37 @@ namespace WpfProject.Windows
                 PhoneNumber = long.Parse(txt_Phone.Text),
                 Mail = txt_Email.Text,
                 Login = txt_Login.Text,
-                Password = txt_Password.Text,
-                PostId = 4
+                Password = txt_Password.Text,                
             });
             User result = HttpApi.GetInstance().Deserialize<User>(json);
 
-            MessageBox.Show("Сохранилось!");
+
+            if (result.LastName != null || result.FirstName != null)
+            {
+                MessageBox.Show("Успешно сохранено!");
+
+                SettingsUsers s = new SettingsUsers();
+                s.Close();
+
+            }           
+            else
+            {
+                MessageBox.Show("Ошибка!", "Введены не все данные");
+            }
+        }
+
+        private void DeleteAccount(object sender, RoutedEventArgs e)
+        {
+
+
+
+            MessageBox.Show("Удалилось");
 
             MainWindow m = new MainWindow();
             m.Show();
             this.Close();
-
-
         }
+
+        
     }
 }
