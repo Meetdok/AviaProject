@@ -48,7 +48,8 @@ namespace WpfProject.Windows
 
         private void FlightOrder(object sender, RoutedEventArgs e)
         {
-
+            FlightsOrder f = new FlightsOrder();
+            f.Show();
         }
     }
 }

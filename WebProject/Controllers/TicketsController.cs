@@ -22,7 +22,7 @@ namespace WebProject.Controllers
         }
 
         // GET: api/Tickets
-        [HttpGet]
+        [HttpPost("ListTickets")]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
         {
           if (_context.Tickets == null)

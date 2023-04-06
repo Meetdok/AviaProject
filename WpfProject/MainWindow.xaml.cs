@@ -74,7 +74,7 @@ namespace WpfProject
                     this.Close();
                 }
 
-                else if (result.PostId == 2)
+                else if (result.PostId == 3)
                 {
                     MainMenuEmployee m = new MainMenuEmployee();
                     m.Show();

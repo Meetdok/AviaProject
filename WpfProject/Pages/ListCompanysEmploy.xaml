@@ -1,0 +1,24 @@
+﻿<Page x:Class="WpfProject.Pages.ListCompanysEmploy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListCompanysEmploy">
+
+    <Grid Background="White">
+        <ListView ItemsSource="{Binding FlightCompany}" Margin="0,0,0,97">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding FlightCompanyName}"/>
+                    <GridViewColumn Header="Сервис" DisplayMemberBinding="{Binding Service.ServiceType}"/>
+                    <GridViewColumn Header="Стоимость сервиса" DisplayMemberBinding="{Binding Service.ServiceCost}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Редактировать" Click="EditCompanys" HorizontalAlignment="Left" Margin="0,353,0,0" VerticalAlignment="Top" Height="45"/>
+        <Button Content="Удалить" Click="DeleteCompanys" HorizontalAlignment="Left" Margin="90,353,0,0" VerticalAlignment="Top" Height="45"/>
+    </Grid>
+</Page>

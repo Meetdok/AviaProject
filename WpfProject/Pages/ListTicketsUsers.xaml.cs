@@ -18,11 +18,11 @@ using WpfProject.Windows;
 namespace WpfProject.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ListTickets.xaml
+    /// Логика взаимодействия для ListTicketsUsers.xaml
     /// </summary>
-    public partial class ListTickets : Page
+    public partial class ListTicketsUsers : Page
     {
-        public ListTickets()
+        public ListTicketsUsers()
         {
             InitializeComponent();
             DataContext = new ListTicketsVM();

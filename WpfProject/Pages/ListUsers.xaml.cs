@@ -13,28 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfProject.ViewModels;
-using WpfProject.Windows;
 
 namespace WpfProject.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ListTickets.xaml
+    /// Логика взаимодействия для ListUsers.xaml
     /// </summary>
-    public partial class ListTickets : Page
+    public partial class ListUsers : Page
     {
-        public ListTickets()
+        public ListUsers()
         {
             InitializeComponent();
-            DataContext = new ListTicketsVM();
+            DataContext = new ListUserVM();
         }
 
-        private void FlightOrder(object sender, RoutedEventArgs e)
+        private void EditUser(object sender, RoutedEventArgs e)
         {
-            FlightsOrder f = new FlightsOrder();
-            f.Show();
+
         }
 
-        private void DeleteTicket(object sender, RoutedEventArgs e)
+        private void DeleteUser(object sender, RoutedEventArgs e)
         {
 
         }

@@ -13,28 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfProject.ViewModels;
-using WpfProject.Windows;
 
 namespace WpfProject.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ListTickets.xaml
+    /// Логика взаимодействия для ListCompanysEmploy.xaml
     /// </summary>
-    public partial class ListTickets : Page
+    public partial class ListCompanysEmploy : Page
     {
-        public ListTickets()
+        public ListCompanysEmploy()
         {
             InitializeComponent();
-            DataContext = new ListTicketsVM();
+            DataContext = new ListCompanysVM();
         }
 
-        private void FlightOrder(object sender, RoutedEventArgs e)
+        private void EditCompanys(object sender, RoutedEventArgs e)
         {
-            FlightsOrder f = new FlightsOrder();
-            f.Show();
+
         }
 
-        private void DeleteTicket(object sender, RoutedEventArgs e)
+        private void DeleteCompanys(object sender, RoutedEventArgs e)
         {
 
         }

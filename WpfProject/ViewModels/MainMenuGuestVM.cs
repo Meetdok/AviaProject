@@ -66,6 +66,13 @@ namespace WpfProject.ViewModels
         public CommandVM nav_airplanes { get; set; }
         public CommandVM nav_companys { get; set; }        
         public CommandVM nav_tickets { get; set; }
+       
+        public CommandVM nav_companysEmploy { get; set; }
+        public CommandVM nav_airplanesEmploy { get; set; }
+
+        public CommandVM nav_usersEmploy { get; set; }
+
+        public CommandVM nav_ticketsUsers { get; set; }
 
         public MainMenuGuestVM()
         {
@@ -92,15 +99,35 @@ namespace WpfProject.ViewModels
             {
                 currentPageControl.SetPage(new ListAirplanes());
             });
-            
-           nav_companys = new CommandVM(() =>
+
+            nav_airplanesEmploy = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ListAirplanesEmploy());
+            });
+
+            nav_companys = new CommandVM(() =>
             {
                 currentPageControl.SetPage(new ListCompanys());
+            });
+
+            nav_companysEmploy = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ListCompanysEmploy());
             });
 
             nav_tickets = new CommandVM(() =>
             {
                 currentPageControl.SetPage(new ListTickets());
+            });
+
+            nav_ticketsUsers = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ListTicketsUsers());
+            });
+
+            nav_usersEmploy = new CommandVM(() =>
+            {
+                currentPageControl.SetPage(new ListUsers ());
             });
         }
 
