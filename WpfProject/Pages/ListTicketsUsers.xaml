@@ -9,7 +9,7 @@
       Title="ListTicketsUsers">
 
     <Grid Background="White">
-        <ListView ItemsSource="{Binding Ticket}" Margin="0,0,0,38">
+        <ListView ItemsSource="{Binding Ticket}" Margin="0,0,0,109">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding TicketTitle}"/>
@@ -19,7 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="FlightOrder" HorizontalAlignment="Left" Margin="0,412,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
-        <Button Content="Удалить" Click="DeleteTicket" HorizontalAlignment="Left" Margin="98,412,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Редактировать" Click="FlightOrder" HorizontalAlignment="Left" Margin="4,346,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Удалить" Click="DeleteTicket" HorizontalAlignment="Left" Margin="102,346,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
     </Grid>
 </Page>

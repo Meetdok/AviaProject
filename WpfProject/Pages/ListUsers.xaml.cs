@@ -30,11 +30,6 @@ namespace WpfProject.Pages
         private void EditUser(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void DeleteUser(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }     
     }
 }

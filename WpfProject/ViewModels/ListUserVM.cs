@@ -10,6 +10,7 @@ namespace WpfProject.ViewModels
 {
     public class ListUserVM : BaseTools
     {
+        public User SelectedItem { get; set; }
         private List<User> user;
 
         public List<User> User
@@ -23,15 +24,23 @@ namespace WpfProject.ViewModels
             }
         }
 
+        public CommandVM DeleteUser { get; set; }
+
 
         public ListUserVM()
         {
             Task.Run(async () =>
             {
-                var json = await HttpApi.GetInstance().Post("Users", "ListUsers", null);
-                User = HttpApi.GetInstance().Deserialize<List<User>>(json);
+                var json = await HttpApi.Post("Users", null, "ListUsers");
+                User = HttpApi.Deserialize<List<User>>(json);
 
             });
+
+            DeleteUser = new CommandVM(async () =>
+            {
+                var json = await HttpApi.Post("Users", SelectedItem.UserId, "delete");
+            });
+
         }
     }
 }

@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:WpfProject.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListAirplanesEmploy">
+      Title="ListAirplanesEmploy" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
 
     <Grid>
-        <ListView ItemsSource="{Binding Airplane}" Margin="0,0,0,45">
+        <ListView ItemsSource="{Binding Airplane}" Margin="0,0,0,110">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding AirplaneTitle}"/>
@@ -18,7 +18,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="EditAirplanes" HorizontalAlignment="Left" Margin="0,405,0,0" VerticalAlignment="Top" Height="45"/>
-        <Button Content="Удалить" Click="DeleteAirplanes" HorizontalAlignment="Left" Margin="90,405,0,0" VerticalAlignment="Top" Height="45"/>
+        <Button Content="Редактировать" Click="EditAirplanes" HorizontalAlignment="Left" Margin="0,340,0,0" VerticalAlignment="Top" Height="45"/>
+        <Button Content="Удалить" Click="DeleteAirplanes" HorizontalAlignment="Left" Margin="90,340,0,0" VerticalAlignment="Top" Height="45"/>
     </Grid>
 </Page>

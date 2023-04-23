@@ -8,57 +8,60 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 
+//дом: 7091
 namespace WpfProject.Tools
 {
-    internal class HttpApi
+    internal static class HttpApi
     {
-        HttpClient client = new HttpClient();
-        string host = "https://localhost:7091/api/";
-        //дом: 7091
-        //колледж: 7118
-        JsonSerializerOptions jsonOpt = new JsonSerializerOptions
+        static HttpClient client = new HttpClient();
+        static string host = "https://localhost:7091/api/";
+        static JsonSerializerOptions options = new JsonSerializerOptions
         {
-            PropertyNameCaseInsensitive = true,
-            ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve
+            ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
+            PropertyNameCaseInsensitive = true
         };
 
-        public async Task<string> Post(string controller, string method, object body)
-        {
-            string url = host + controller;
-            if (!string.IsNullOrEmpty(method))
-                url += $"/{method}";
-            string json = "";
-            if (body != null)
-            {
-                Type type = body.GetType();
-
-                json = JsonSerializer.Serialize(body, type, jsonOpt);
-            }
-            var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-            return await response.Content.ReadAsStringAsync();
-        }
-
-
-        internal T Deserialize<T>(string json) where T : class
+        public static async Task<string> Post(string controller, object body, string method)
         {
             try
             {
-                return JsonSerializer.Deserialize<T>(json, jsonOpt);
+                string url = host + controller;
+                if (!string.IsNullOrEmpty(method))
+                    url += $"/{method}";
+                //url += $"/{id}"; для get/delete/put
+                string json = "";
+                if (body != null)
+                    json = JsonSerializer.Serialize(body, body.GetType(), options);
+                var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+                if (response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsStringAsync();
+                else
+                {
+                    MessageBox.Show(await response.Content.ReadAsStringAsync());
+                    return "Ошиибка!!";
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                return "Предупреждение";
             }
-            return null;
         }
 
-        static HttpApi instance;
 
-        public static HttpApi GetInstance()
+        public static T Deserialize<T>(string json)
         {
-            if (instance == null)
-                instance = new HttpApi();
-            return instance;
+            return JsonSerializer.Deserialize<T>(json, options);
         }
     }
+
+    //public static HttpApi instance;
+
+    //public static HttpApi GetInstance()
+    //{
+    //    if (instance == null)
+    //        instance = new HttpApi();
+    //    return instance;
+    //}
 }
+

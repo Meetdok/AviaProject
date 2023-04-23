@@ -25,6 +25,7 @@ namespace WpfProject.ViewModels
             Signal(nameof(CurrentPage));
         }
 
+        
         private List<Airplane> airplane;
         private List<Flight> flight;
         private List<FlightCompany> flightCompanie;
@@ -62,7 +63,7 @@ namespace WpfProject.ViewModels
             }
         }
 
-
+        public CommandVM DelFlight { get; set; }
         public CommandVM nav_airplanes { get; set; }
         public CommandVM nav_companys { get; set; }        
         public CommandVM nav_tickets { get; set; }
@@ -72,21 +73,23 @@ namespace WpfProject.ViewModels
 
         public CommandVM nav_usersEmploy { get; set; }
 
-        public CommandVM nav_ticketsUsers { get; set; }
+        public CommandVM nav_ticketsEmploys { get; set; }
 
         public MainMenuGuestVM()
         {
 
             Task.Run(async () =>
             {
-                var json = await HttpApi.GetInstance().Post("Flights", "ListFlights", null);
-                Flight = HttpApi.GetInstance().Deserialize<List<Flight>>(json);
+                var json = await HttpApi.Post("Flights", null, "ListFlights");
+                Flight = HttpApi.Deserialize<List<Flight>>(json);
 
-                var json2 = await HttpApi.GetInstance().Post("Airplanes", "ListAirplanes", null);
-                Airplane = HttpApi.GetInstance().Deserialize<List<Airplane>>(json);
+                var json2 = await HttpApi.Post("Airplanes", null, "ListAirplanes");
+                Airplane = HttpApi.Deserialize<List<Airplane>>(json);
 
-                var json3 = await HttpApi.GetInstance().Post("FlightCompanys", "ListFlightCompanys", null);
-                FlightCompanie = HttpApi.GetInstance().Deserialize<List<FlightCompany>>(json);
+                var json3 = await HttpApi.Post("FlightCompanys", null, "ListFlightCompanys");
+                FlightCompanie = HttpApi.Deserialize<List<FlightCompany>>(json);
+
+               
 
             });
 
@@ -120,7 +123,7 @@ namespace WpfProject.ViewModels
                 currentPageControl.SetPage(new ListTickets());
             });
 
-            nav_ticketsUsers = new CommandVM(() =>
+            nav_ticketsEmploys = new CommandVM(() =>
             {
                 currentPageControl.SetPage(new ListTicketsUsers());
             });

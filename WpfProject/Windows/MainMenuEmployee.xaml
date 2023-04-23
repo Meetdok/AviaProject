@@ -20,7 +20,7 @@
                 <MenuItem.Background>
                     <ImageBrush ImageSource="/Windows/User.png"/>
                 </MenuItem.Background>
-                <MenuItem Header="Билеты пользователей" Command="{Binding nav_ticketsUsers}"/>
+                <MenuItem Header="Билеты пользователей" Command="{Binding nav_ticketsEmploys}"/>
                 <MenuItem Header="Настройки" Click="Settings"/>
                 <MenuItem Header="Выход" Click="Exit"/>
             </MenuItem>
@@ -30,7 +30,7 @@
             <MenuItem Header="Рейсы" Click="nav_flights"/>
         </Menu>
 
-        <ListView Margin="0,28,0,0" ItemsSource="{Binding Flight}"  ContextMenu="{StaticResource ListView}">
+        <ListView Margin="0,28,0,0" ItemsSource="{Binding Flight}" ContextMenu="{StaticResource ListView}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Рейс" DisplayMemberBinding="{Binding FlightTitle}"/>

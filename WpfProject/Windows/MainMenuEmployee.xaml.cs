@@ -52,6 +52,13 @@ namespace WpfProject.Windows
             this.Close();
         }
 
+        
+        private void CreateFlight(object sender, RoutedEventArgs e)
+        {
+            FlightsCreate create = new FlightsCreate();
+            create.Show();
+        }
+
         private void DeleteFlight(object sender, RoutedEventArgs e)
         {
 

@@ -22,7 +22,7 @@ namespace WebProject.Controllers
         }
 
         // GET: api/Users
-        [HttpGet("ListUsers")]
+        [HttpPost("ListUsers")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
           if (_context.Users == null)
@@ -105,7 +105,7 @@ namespace WebProject.Controllers
         }
 
         // DELETE: api/Users/5
-        [HttpDelete("{id}")]
+        [HttpPost("delete")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             if (_context.Users == null)

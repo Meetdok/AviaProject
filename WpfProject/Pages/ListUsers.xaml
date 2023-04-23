@@ -4,12 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfProject.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListUsers">
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="ListUsers" Height="442">
 
     <Grid Background="White">
-        <ListView ItemsSource="{Binding User}" Margin="0,0,0,53">
+        <ListView ItemsSource="{Binding User}" SelectedItem="{Binding SelectedItem}" Margin="0,0,0,130">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
@@ -22,7 +21,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="EditUser" HorizontalAlignment="Left" Margin="0,402,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
-        <Button Content="Удалить" Click="DeleteUser" HorizontalAlignment="Left" Margin="98,402,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Редактировать" Click="EditUser" HorizontalAlignment="Left" Margin="0,317,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Удалить" Command="{Binding DeleteUser}" HorizontalAlignment="Left" Margin="98,317,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
     </Grid>
 </Page>

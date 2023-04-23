@@ -62,19 +62,12 @@ namespace WpfProject
         private async void btn_sign(object sender, RoutedEventArgs e)
         {
 
-            var json = await HttpApi.GetInstance().Post("Users", "Auth", new Auth { Login = textBox_login.Text, Password = passBox_password.Password });
-            User result = HttpApi.GetInstance().Deserialize<User>(json);
+            var json = await HttpApi.Post("Users",  new Auth { Login = textBox_login.Text, Password = passBox_password.Password }, "Auth");
+            User result = HttpApi.Deserialize<User>(json);
 
 
-            {
-                if (result.PostId == 1)
-                {
-                    MainMenuAdmin m = new MainMenuAdmin();
-                    m.Show();
-                    this.Close();
-                }
-
-                else if (result.PostId == 3)
+            {               
+                 if (result.PostId == 3)
                 {
                     MainMenuEmployee m = new MainMenuEmployee();
                     m.Show();
@@ -87,8 +80,6 @@ namespace WpfProject
                     m.Show();
                     this.Close();
                 }
-
-
 
                 else
                 {
