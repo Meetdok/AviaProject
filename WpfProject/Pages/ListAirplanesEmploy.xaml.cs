@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfProject.ViewModels;
+using WpfProject.Windows;
 
 namespace WpfProject.Pages
 {
@@ -30,11 +31,11 @@ namespace WpfProject.Pages
         private void EditAirplanes(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void DeleteAirplanes(object sender, RoutedEventArgs e)
+        }       
+        private void AddAirplane(object sender, RoutedEventArgs e)
         {
-
+            AirplanesAdd a = new AirplanesAdd();
+            a.Show();
         }
     }
 }

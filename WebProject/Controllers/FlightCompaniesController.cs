@@ -83,7 +83,7 @@ namespace WebProject.Controllers
 
         // POST: api/FlightCompanies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost("save")]
         public async Task<ActionResult<FlightCompany>> PostFlightCompany(FlightCompany flightCompany)
         {
           if (_context.FlightCompanys == null)
@@ -97,8 +97,8 @@ namespace WebProject.Controllers
         }
 
         // DELETE: api/FlightCompanies/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFlightCompany(int id)
+        [HttpPost("delete")]
+        public async Task<IActionResult> DeleteFlightCompany([FromBody]int id)
         {
             if (_context.FlightCompanys == null)
             {

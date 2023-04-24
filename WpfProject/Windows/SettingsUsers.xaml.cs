@@ -28,7 +28,7 @@ namespace WpfProject.Windows
 
         private async void Submit(object sender, RoutedEventArgs e)
         {
-            var json = await HttpApi.Post("Users", new User
+            var json = await HttpApi.Post("Users", "SaveUser", new User
             {
                 FirstName = txt_Name.Text,
                 LastName = txt_LastName.Text,
@@ -37,7 +37,7 @@ namespace WpfProject.Windows
                 Mail = txt_Email.Text,
                 Login = txt_Login.Text,
                 Password = txt_Password.Text,                
-            }, "SaveUser");
+            });
             User result = HttpApi.Deserialize<User>(json);
 
 

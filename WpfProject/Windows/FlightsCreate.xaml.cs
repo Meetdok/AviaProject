@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfProject.Tools;
+using WpfProject.ViewModels;
 using WpfProject.WebModels;
 
 namespace WpfProject.Windows
@@ -24,24 +25,24 @@ namespace WpfProject.Windows
         public FlightsCreate()
         {
             InitializeComponent();
+            DataContext = new MainMenuGuestVM();
         }
 
         private async void CreateFlight(object sender, RoutedEventArgs e)
         {
-            var json = await HttpApi.Post("Flights",  new Flight
+            var json = await HttpApi.Post("Flights", "save",  new Flight
             {
                 FlightTitle = txt_NameFlight.Text,
                 FlightCityDeparture = txt_DepartureFlight.Text,
                 FlightCityArrival = txt_ArrivalFlight.Text,
-
-                FlightDate = txt_DateFlight.SelectedDate,
-                AirplaneId = txt_AirplaneFlight.SelectedIndex,
-                FlightCompanyId = txt_CompanyFlight.SelectedIndex,
+                FlightDate = DateTime.Parse(txt_DateFlight.Text),
+                Airplane = new Airplane {AirplaneTitle = txt_AirplaneFlight.Text },
+                FlightCompany = new FlightCompany { FlightCompanyName = txt_CompanyFlight.Text},
                 NumberOfSeats = int.Parse(txt_SeatsFlight.Text),
-            }, "SaveFlight") ;
-            User result = HttpApi.Deserialize<User>(json);
+            });
+            Flight result = HttpApi.Deserialize<Flight>(json);
 
-            MessageBox.Show("Сохранилось!");
+            MessageBox.Show("Сохранилось!");           
         }
     }
 }

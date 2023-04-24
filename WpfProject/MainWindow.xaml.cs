@@ -62,7 +62,7 @@ namespace WpfProject
         private async void btn_sign(object sender, RoutedEventArgs e)
         {
 
-            var json = await HttpApi.Post("Users",  new Auth { Login = textBox_login.Text, Password = passBox_password.Password }, "Auth");
+            var json = await HttpApi.Post("Users", "Auth", new Auth { Login = textBox_login.Text, Password = passBox_password.Password });
             User result = HttpApi.Deserialize<User>(json);
 
 

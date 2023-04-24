@@ -7,21 +7,20 @@
         mc:Ignorable="d"
         Title="Добавление рейса" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="Название:" HorizontalAlignment="Left" Margin="27,39,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
-        <TextBox x:Name="txt_NameFlight" HorizontalAlignment="Left" Margin="85,44,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="350" Background="#FFE2CFCF"/>
-
-        <TextBox x:Name="txt_DepartureFlight" HorizontalAlignment="Left" Margin="85,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="350" Background="#FFE2CFCF"/>
+        <Label Content="Название:" HorizontalAlignment="Left" Margin="20,39,0,0" VerticalAlignment="Top" Height="26" Width="65"/>
+        <TextBox Name="txt_NameFlight" HorizontalAlignment="Left" Margin="85,44,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="350" Background="#FFE2CFCF"/>
+        <TextBox Name="txt_DepartureFlight" HorizontalAlignment="Left" Margin="85,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="350" Background="#FFE2CFCF"/>
         <Label Content="Откуда:" HorizontalAlignment="Left" Margin="27,65,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_ArrivalFlight" HorizontalAlignment="Left" Margin="85,96,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="350" Background="#FFE2CFCF"/>
+        <TextBox Name="txt_ArrivalFlight" HorizontalAlignment="Left" Margin="85,96,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="350" Background="#FFE2CFCF"/>
         <Label Content="   Куда:" HorizontalAlignment="Left" Margin="27,91,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="txt_DateFlight" HorizontalAlignment="Left" Margin="85,122,0,0"  VerticalAlignment="Top" Height="21" Width="350"/>
+        <DatePicker Name="txt_DateFlight" HorizontalAlignment="Left" Margin="85,122,0,0"  VerticalAlignment="Top" Height="21" Width="350"/>
         <Label Content="   Дата:" HorizontalAlignment="Left" Margin="27,117,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="txt_CompanyFlight" HorizontalAlignment="Left" Margin="85,148,0,0" VerticalAlignment="Top" Height="21" Width="131" Background="#FFE2CFCF"/>
+        <ComboBox Name="txt_CompanyFlight" ItemsSource="{Binding FlightCompany}" DisplayMemberPath="FlightCompanyName" HorizontalAlignment="Left" Margin="85,148,0,0" VerticalAlignment="Top" Height="21" Width="131" Background="#FFE2CFCF"/>
         <Label Content="Компания:" HorizontalAlignment="Left" Margin="7,143,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="txt_AirplaneFlight" HorizontalAlignment="Left" Margin="85,174,0,0"  VerticalAlignment="Top" Height="21" Width="131" Background="#FFE2CFCF"/>
+        <ComboBox Name="txt_AirplaneFlight" ItemsSource="{Binding Airplane}" DisplayMemberPath="AirplaneTitle" HorizontalAlignment="Left" Margin="85,174,0,0"  VerticalAlignment="Top" Height="21" Width="131" Background="#FFE2CFCF"/>
         <Label Content="Самолёт:" HorizontalAlignment="Left" Margin="16,169,0,0" VerticalAlignment="Top"/>
-        <Label Content="Колличество мест:" HorizontalAlignment="Left" Margin="16,0,0,0" VerticalAlignment="Center"/>
-        <TextBox x:Name="txt_SeatsFlight" HorizontalAlignment="Left" Margin="128,209,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="88" Background="#FFE2CFCF"/>
+        <Label Content="Колличество мест:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        <TextBox Name="txt_SeatsFlight" HorizontalAlignment="Left" Margin="127,204,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="21" Width="70" Background="#FFE2CFCF"/>
         <Button Content="Добавить" Click="CreateFlight" HorizontalAlignment="Center" Margin="0,371,0,0" VerticalAlignment="Top" Height="45"/>
     </Grid>
 </Window>

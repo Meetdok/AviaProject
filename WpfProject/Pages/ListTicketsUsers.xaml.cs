@@ -32,11 +32,6 @@ namespace WpfProject.Pages
         {
             FlightsOrder f = new FlightsOrder();
             f.Show();
-        }
-
-        private void DeleteTicket(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
     }
 }

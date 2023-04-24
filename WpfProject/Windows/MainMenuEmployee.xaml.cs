@@ -28,8 +28,7 @@ namespace WpfProject.Windows
 
         private void EditFlight(object sender, RoutedEventArgs e)
         {
-            FlightsOrderEdit o = new FlightsOrderEdit();
-            o.Show();
+            
         }
 
         private void Settings(object sender, RoutedEventArgs e)
@@ -50,18 +49,11 @@ namespace WpfProject.Windows
             MainMenuEmployee m = new MainMenuEmployee();
             m.Show();
             this.Close();
-        }
-
-        
-        private void CreateFlight(object sender, RoutedEventArgs e)
+        }                      
+        private void AddFlight(object sender, RoutedEventArgs e)
         {
-            FlightsCreate create = new FlightsCreate();
-            create.Show();
-        }
-
-        private void DeleteFlight(object sender, RoutedEventArgs e)
-        {
-
+            FlightsCreate f = new FlightsCreate();
+            f.Show();
         }
     }
 }

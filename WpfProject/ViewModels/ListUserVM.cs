@@ -12,6 +12,7 @@ namespace WpfProject.ViewModels
     {
         public User SelectedItem { get; set; }
         private List<User> user;
+        private List<Post> post;
 
         public List<User> User
         {
@@ -24,6 +25,17 @@ namespace WpfProject.ViewModels
             }
         }
 
+        public List<Post> Post
+        {
+            get => post;
+            set
+            {
+                post = value;
+
+                Signal();
+            }
+        }
+
         public CommandVM DeleteUser { get; set; }
 
 
@@ -31,14 +43,28 @@ namespace WpfProject.ViewModels
         {
             Task.Run(async () =>
             {
-                var json = await HttpApi.Post("Users", null, "ListUsers");
+                var json = await HttpApi.Post("Users", "ListUsers", null);
                 User = HttpApi.Deserialize<List<User>>(json);
+
+                var json2 = await HttpApi.Post("Posts", "list", null);
+                Post = HttpApi.Deserialize<List<Post>>(json2);
 
             });
 
             DeleteUser = new CommandVM(async () =>
             {
-                var json = await HttpApi.Post("Users", SelectedItem.UserId, "delete");
+                var json = await HttpApi.Post("Users", "delete", SelectedItem.UserId);
+
+                Task.Run(async () =>
+                {
+                    var json = await HttpApi.Post("Users", "ListUsers", null);
+                    User = HttpApi.Deserialize<List<User>>(json);
+
+                    var json2 = await HttpApi.Post("Posts", "list", null);
+                    Post = HttpApi.Deserialize<List<Post>>(json2);
+
+                });
+
             });
 
         }

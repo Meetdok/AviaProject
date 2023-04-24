@@ -12,28 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfProject.Tools;
+using WpfProject.ViewModels;
 using WpfProject.WebModels;
 
 namespace WpfProject.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для Registration.xaml
+    /// Логика взаимодействия для AddUser.xaml
     /// </summary>
-    public partial class Registration : Window
+    public partial class AddUser : Window
     {
-        public Registration()
+        public AddUser()
         {
             InitializeComponent();
+            DataContext = new ListUserVM();
         }
 
-        private void Back(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
-        }
-
-        private async void Register(object sender, RoutedEventArgs e)
+        private async void AddUsers(object sender, RoutedEventArgs e)
         {
             var json = await HttpApi.Post("Users", "SaveUser", new User
             {
@@ -44,17 +39,11 @@ namespace WpfProject.Windows
                 Mail = txt_Email.Text,
                 Login = txt_Login.Text,
                 Password = txt_Password.Text,
-                PostId = 4
+                Post = new Post { PostName = txt_Role.Text}
             });
             User result = HttpApi.Deserialize<User>(json);
 
             MessageBox.Show("Сохранилось!");
-
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
-
-
         }
     }
 }

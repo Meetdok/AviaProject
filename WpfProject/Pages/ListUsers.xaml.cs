@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfProject.ViewModels;
+using WpfProject.Windows;
 
 namespace WpfProject.Pages
 {
@@ -30,6 +31,12 @@ namespace WpfProject.Pages
         private void EditUser(object sender, RoutedEventArgs e)
         {
 
-        }     
+        }
+
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+            WpfProject.Windows.AddUser a = new WpfProject.Windows.AddUser();
+            a.Show();
+        }
     }
 }

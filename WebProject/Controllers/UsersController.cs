@@ -29,7 +29,7 @@ namespace WebProject.Controllers
           {
               return NotFound();
           }
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(s=>s.Post).ToListAsync();
         }
 
         [HttpPost("Auth")]
@@ -106,7 +106,7 @@ namespace WebProject.Controllers
 
         // DELETE: api/Users/5
         [HttpPost("delete")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser([FromBody]int id)
         {
             if (_context.Users == null)
             {

@@ -9,7 +9,7 @@
       Title="ListCompanysEmploy">
 
     <Grid Background="White">
-        <ListView ItemsSource="{Binding FlightCompany}" Margin="0,0,0,97">
+        <ListView ItemsSource="{Binding FlightCompany}" SelectedItem="{Binding SelectedItem}" Margin="0,30,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding FlightCompanyName}"/>
@@ -18,7 +18,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="EditCompanys" HorizontalAlignment="Left" Margin="0,353,0,0" VerticalAlignment="Top" Height="45"/>
-        <Button Content="Удалить" Click="DeleteCompanys" HorizontalAlignment="Left" Margin="90,353,0,0" VerticalAlignment="Top" Height="45"/>
+        <Button Content="Редактировать" Click="EditCompanys" HorizontalAlignment="Left" Margin="351,0,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Удалить" Command="{Binding DeleteCompany}" HorizontalAlignment="Left" Margin="441,0,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Добавить" Click="AddCompanys" HorizontalAlignment="Left" Margin="289,0,0,0" VerticalAlignment="Top" Height="30"/>
     </Grid>
 </Page>

@@ -10,6 +10,9 @@ namespace WpfProject.ViewModels
 {
     public class ListCompanysVM : BaseTools
     {
+
+        public FlightCompany SelectedItem { get; set; }
+
         private List<FlightCompany> flightCompany;
         private List<Service> services;
 
@@ -35,16 +38,33 @@ namespace WpfProject.ViewModels
             }
         }
 
+        public CommandVM DeleteCompany { get; set; }
+
         public ListCompanysVM()
         {
             Task.Run(async () =>
             {
-                var json = await HttpApi.Post("FlightCompanies", null, "ListFlightCompanys");
+                var json = await HttpApi.Post("FlightCompanies", "ListFlightCompanys", null);
                 FlightCompany = HttpApi.Deserialize<List<FlightCompany>>(json);
 
-                var json2 = await HttpApi.Post("Services", null, "ListServices");
-                Service = HttpApi.Deserialize<List<Service>>(json);
+                var json2 = await HttpApi.Post("Services", "ListServices", null);
+                Service = HttpApi.Deserialize<List<Service>>(json2);
             });
+
+            DeleteCompany = new CommandVM(async () =>
+            {
+                var json = await HttpApi.Post("FlightCompanies", "delete", SelectedItem.FlightCompanysId);
+
+                Task.Run(async () =>
+                {
+                    var json = await HttpApi.Post("FlightCompanies", "ListFlightCompanys", null);
+                    FlightCompany = HttpApi.Deserialize<List<FlightCompany>>(json);
+
+                    var json2 = await HttpApi.Post("Services", "ListServices", null);
+                    Service = HttpApi.Deserialize<List<Service>>(json);
+                });
+            });
+
         }
     }
 }

@@ -21,7 +21,7 @@ namespace WpfProject.Tools
             PropertyNameCaseInsensitive = true
         };
 
-        public static async Task<string> Post(string controller, object body, string method)
+        public static async Task<string> Post(string controller, string method, object body)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace WpfProject.Tools
                     return await response.Content.ReadAsStringAsync();
                 else
                 {
-                    MessageBox.Show(await response.Content.ReadAsStringAsync());
+                    //MessageBox.Show(await response.Content.ReadAsStringAsync());
                     return "Ошиибка!!";
                 }
             }

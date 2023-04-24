@@ -9,7 +9,7 @@
       Title="ListAirplanesEmploy" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
 
     <Grid>
-        <ListView ItemsSource="{Binding Airplane}" Margin="0,0,0,110">
+        <ListView ItemsSource="{Binding Airplane}" SelectedItem="{Binding SelectedItem}" Margin="0,30,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название" DisplayMemberBinding="{Binding AirplaneTitle}"/>
@@ -18,7 +18,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="EditAirplanes" HorizontalAlignment="Left" Margin="0,340,0,0" VerticalAlignment="Top" Height="45"/>
-        <Button Content="Удалить" Click="DeleteAirplanes" HorizontalAlignment="Left" Margin="90,340,0,0" VerticalAlignment="Top" Height="45"/>
+        <Button Content="Редактировать" Click="EditAirplanes" HorizontalAlignment="Left" Margin="330,0,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Удалить" Command="{Binding DeleteAirplane}" HorizontalAlignment="Left" Margin="420,0,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Добавить" Click="AddAirplane" HorizontalAlignment="Left" Margin="268,0,0,0" VerticalAlignment="Top" Height="30"/>
     </Grid>
 </Page>

@@ -10,6 +10,8 @@ namespace WpfProject.ViewModels
 {
     public class ListAirplanesVM : BaseTools
     {
+        public Airplane SelectedItem { get; set; }
+
         private List<Airplane> airplane;
         private List<AirplanesClass> airplanesClasses;
 
@@ -35,16 +37,34 @@ namespace WpfProject.ViewModels
             }
         }
 
+        public CommandVM DeleteAirplane { get; set; }
+
         public ListAirplanesVM()
         {
             Task.Run(async () =>
             {
-                var json = await HttpApi.Post("Airplanes", null, "ListAirplanes");
+                var json = await HttpApi.Post("Airplanes", "ListAirplanes", null);
                 Airplane = HttpApi.Deserialize<List<Airplane>>(json);
 
-                var json2 = await HttpApi.Post("AirplanesClasses", null, "ListAirplanesClasses");
-                AirplanesClass = HttpApi.Deserialize<List<AirplanesClass>>(json);
+                var json2 = await HttpApi.Post("AirplanesClasses", "ListAirplanesClasses", null);
+                AirplanesClass = HttpApi.Deserialize<List<AirplanesClass>>(json2);
             });
+
+
+            DeleteAirplane = new CommandVM(async () =>
+            {
+                var json = await HttpApi.Post("Airplanes", "delete", SelectedItem.AirplanesId);
+
+                Task.Run(async () =>
+                {
+                    var json = await HttpApi.Post("Airplanes", "ListAirplanes", null);
+                    Airplane = HttpApi.Deserialize<List<Airplane>>(json);
+
+                    var json2 = await HttpApi.Post("AirplanesClasses", "ListAirplanesClasses", null);
+                    AirplanesClass = HttpApi.Deserialize<List<AirplanesClass>>(json2);
+                });
+            });
+
         }
     }
 }

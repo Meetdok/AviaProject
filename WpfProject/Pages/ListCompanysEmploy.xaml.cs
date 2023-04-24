@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfProject.ViewModels;
+using WpfProject.Windows;
 
 namespace WpfProject.Pages
 {
@@ -31,10 +32,10 @@ namespace WpfProject.Pages
         {
 
         }
-
-        private void DeleteCompanys(object sender, RoutedEventArgs e)
+        private void AddCompanys(object sender, RoutedEventArgs e)
         {
-
+            AddCompany a = new AddCompany();
+            a.Show();
         }
     }
 }

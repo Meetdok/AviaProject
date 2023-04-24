@@ -83,7 +83,7 @@ namespace WebProject.Controllers
 
         // POST: api/Flights
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("SaveFlight")]
+        [HttpPost("save")]
         public async Task<ActionResult<Flight>> PostFlight(Flight flight)
         {
           if (_context.Flights == null)

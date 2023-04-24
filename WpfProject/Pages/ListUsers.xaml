@@ -8,7 +8,7 @@
       Title="ListUsers" Height="442">
 
     <Grid Background="White">
-        <ListView ItemsSource="{Binding User}" SelectedItem="{Binding SelectedItem}" Margin="0,0,0,130">
+        <ListView ItemsSource="{Binding User}" SelectedItem="{Binding SelectedItem}" Margin="0,35,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
@@ -18,10 +18,12 @@
                     <GridViewColumn Header="Почта" DisplayMemberBinding="{Binding Mail}"/>
                     <GridViewColumn Header="Логин" DisplayMemberBinding="{Binding Login}"/>
                     <GridViewColumn Header="Пароль" DisplayMemberBinding="{Binding Password}"/>
+                    <GridViewColumn Header="Роль" DisplayMemberBinding="{Binding Post.PostName}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="EditUser" HorizontalAlignment="Left" Margin="0,317,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
-        <Button Content="Удалить" Command="{Binding DeleteUser}" HorizontalAlignment="Left" Margin="98,317,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Редактировать" Click="EditUser" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="92"/>
+        <Button Content="Удалить" Command="{Binding DeleteUser}" HorizontalAlignment="Left" Margin="452,0,0,0" VerticalAlignment="Top" Height="35" Width="93"/>
+        <Button Content="Добавить" Click="AddUser" HorizontalAlignment="Left" Margin="256,0,0,0" VerticalAlignment="Top" Height="35" Width="93"/>
     </Grid>
 </Page>
